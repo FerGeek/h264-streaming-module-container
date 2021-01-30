@@ -1,8 +1,9 @@
 version: '3.6'
 services:
   server:
-    image: 'serverfile:nginx'
+    image: 'serverfile:apache'
     volumes:
       - './tmp:/www'
     ports:
-      - '8080:80'
+     - '8000:80'
+    # command: sleep 5000
