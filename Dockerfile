@@ -12,10 +12,10 @@ RUN apk add gzip=1.10-r1 pcre-dev=8.44-r0
 RUN apk add build-base
 RUN apk add zlib-dev=1.2.11-r3 zlib=1.2.11-r3
 RUN apk add libpcre32=8.44-r0
-RUN apk add openssl-dev=1.1.1i-r0
-RUN apk add openssl=1.1.1i-r0 openssl-libs-static=1.1.1i-r0
-RUN apk add libxslt-dev=1.1.34-r0
-RUN apk add gd-dev=2.3.0-r2
+RUN apk add openssl-dev
+RUN apk add openssl openssl-libs-static
+RUN apk add libxslt-dev
+RUN apk add gd-dev
 RUN apk add g++
 RUN apk add make
 RUN apk add curl
@@ -27,7 +27,7 @@ RUN cd ~/nginx-1.15.0 && make && make install
 FROM alpine:3.13
 COPY --from=builder /project/nginx-1.15.0 ./nginx/
 RUN apk update --no-cache
-RUN apk add libxslt-dev=1.1.34-r0 gd-dev=2.3.0-r2 pcre-dev=8.44-r0 libxslt-dev=1.1.34-r0
+RUN apk add libxslt-dev gd-dev pcre-dev libxslt-dev
 RUN mkdir /nginx/conf/conf.d
 RUN mkdir /www
 RUN chmod 0755 /nginx/conf/conf.d
